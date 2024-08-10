@@ -1,7 +1,6 @@
-<!-- Auth Modal -->
 <div
   class="fixed z-50 inset-0 overflow-y-auto"
-  [ngClass]="{ hidden: !modal.isModalVisible() }"
+  [ngClass]="{ hidden: !modal.isModalVisible(modalId) }"
   id="modal"
 >
   <div

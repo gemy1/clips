@@ -8,8 +8,8 @@ import { ModalService } from '../../services/modal.service';
 })
 export class NavComponent {
   constructor(public modal: ModalService) {}
-  openModal(event: Event) {
+  openModal(event: Event, modalId: string) {
     event.preventDefault();
-    this.modal.toggelModal();
+    this.modal.toggelModal(modalId);
   }
 }
