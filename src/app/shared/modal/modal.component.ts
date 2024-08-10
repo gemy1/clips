@@ -12,7 +12,6 @@ export class ModalComponent implements OnInit {
   constructor(public modal: ModalService, public el: ElementRef) {}
   ngOnInit(): void {
     this.modal.registerModal(this.modalId);
-    console.log(this.el.nativeElement);
     document.body.appendChild(this.el.nativeElement);
   }
 

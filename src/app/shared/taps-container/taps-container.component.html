@@ -1,0 +1,20 @@
+<!-- Tabs -->
+<ul class="flex flex-wrap mb-4">
+  @for (tap of taps; track $index) {
+  <li class="flex-auto text-center">
+    <a
+      class="block rounded py-3 px-4 transition text-white"
+      href="#"
+      [ngClass]="{
+        'hover:text-white': tap.isSowing,
+        'bg-indigo-400': tap.isSowing,
+        'hover:text-indigo-400': !tap.isSowing
+      }"
+      (click)="openTap($event, tap)"
+      >{{ tap.title }}</a
+    >
+  </li>
+  }
+</ul>
+
+<ng-content></ng-content>
