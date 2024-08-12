@@ -10,6 +10,7 @@ export class NavComponent {
   constructor(public modal: ModalService) {}
   openModal(event: Event, modalId: string) {
     event.preventDefault();
+
     this.modal.toggelModal(modalId);
   }
 }

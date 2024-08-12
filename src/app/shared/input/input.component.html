@@ -1,0 +1,20 @@
+<input
+  [formControl]="control"
+  [type]="type"
+  class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+  [placeholder]="placeholder"
+/>
+<!-- Validation Error -->
+@if (control.touched && control.errors?.['required']) {
+<p class="mt-2 p-2 rounded-md bg-red-500 font-medium text-sm">
+  This Field Is Requierd
+</p>
+} @if (control.touched && control.errors?.['minlength']) {
+<p class="mt-2 p-2 rounded-md bg-red-500 font-medium text-sm">
+  This Field must be at lest 3 characters
+</p>
+} @if (control.touched && control.errors?.['email']) {
+<p class="mt-2 p-2 rounded-md bg-red-500 font-medium text-sm">
+  Plaese Enter A Valid Email
+</p>
+}
