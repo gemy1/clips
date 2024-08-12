@@ -17,4 +17,8 @@
 <p class="mt-2 p-2 rounded-md bg-red-500 font-medium text-sm">
   Plaese Enter A Valid Email
 </p>
+} @if (control.touched && control.errors?.['notMatch']) {
+<p class="mt-2 p-2 rounded-md bg-red-500 font-medium text-sm">
+  The Password Dose Not Match
+</p>
 }

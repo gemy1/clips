@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -20,27 +27,42 @@ export class RegisterComponent {
   age: FormControl = new FormControl('', [Validators.required]);
   password: FormControl = new FormControl('', [Validators.required]);
 
-  confirmPassword: FormControl = new FormControl('', [
-    Validators.required,
-    // this.matchPassword(this.password),
-  ]);
+  confirmPassword: FormControl = new FormControl('', [Validators.required]);
   phone: FormControl = new FormControl('', [Validators.required]);
 
-  registerForm: FormGroup = new FormGroup({
-    name: this.name,
-    email: this.email,
-  });
+  registerForm: FormGroup = new FormGroup(
+    {
+      name: this.name,
+      email: this.email,
+      age: this.age,
+      password: this.password,
+      confirmPassword: this.confirmPassword,
+      phone: this.phone,
+    },
+    [this.matchPassword()]
+  );
 
-  matchPassword(control: FormControl) {
-    const passwordControl = this.registerForm.get('confirmPassword');
-    if (!passwordControl || !control.value) return null;
-    return control.value === passwordControl.value
-      ? null
-      : { passwordMismatch: true };
+  matchPassword(): ValidatorFn {
+    return (formGroup: AbstractControl): ValidationErrors | null => {
+      const password = formGroup.get('password')?.value;
+      const confirmPassword = formGroup.get('confirmPassword')?.value;
+
+      if (password === confirmPassword) {
+        formGroup.get('confirmPassword')?.setErrors(null);
+        return null;
+      }
+      formGroup.get('confirmPassword')?.setErrors({ notMatch: true });
+      return { notMatch: true };
+    };
   }
 
   onRegister() {
-    console.log(this.registerForm);
+    console.log(this.registerForm.value);
+    if (!this.registerForm.valid) {
+      return;
+    }
+
+    this.registerForm.reset();
   }
 
   getControl(FormControlName: string) {

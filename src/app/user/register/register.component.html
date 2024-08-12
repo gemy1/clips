@@ -17,41 +17,43 @@
   <!-- Age -->
   <div class="mb-3">
     <label class="inline-block mb-2">Age</label>
-    <input
+    <app-input
+      [control]="age"
       type="number"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-    />
+      placeholder="Enter Your Age"
+    ></app-input>
   </div>
   <!-- Password -->
   <div class="mb-3">
     <label class="inline-block mb-2">Password</label>
-    <input
+    <app-input
+      [control]="password"
       type="password"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-      placeholder="Password"
-    />
+      placeholder="Enter Password"
+    ></app-input>
   </div>
   <!-- Confirm Password -->
   <div class="mb-3">
     <label class="inline-block mb-2">Confirm Password</label>
-    <input
+    <app-input
+      [control]="confirmPassword"
       type="password"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-      placeholder="Confirm Password"
-    />
+      placeholder="Enter confirm password"
+    ></app-input>
   </div>
   <!-- Phone Number -->
   <div class="mb-3">
     <label class="inline-block mb-2">Phone Number</label>
-    <input
+    <app-input
+      [control]="phone"
       type="text"
-      class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-      placeholder="Enter Phone Number"
-    />
+      placeholder="Enter phone"
+    ></app-input>
   </div>
   <button
     type="submit"
-    class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition hover:bg-indigo-500"
+    class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition hover:bg-indigo-500 disabled:bg-slate-500"
+    [disabled]="registerForm.invalid"
   >
     Submit
   </button>
