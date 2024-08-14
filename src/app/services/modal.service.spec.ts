@@ -13,4 +13,8 @@ describe('ModalService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should register the modal', () => {
+    service.registerModal('auth');
+  });
 });
