@@ -5,9 +5,13 @@ import IModal from '../interfaces/modal';
   providedIn: 'root',
 })
 export class ModalService {
-  public modals: IModal[] = [];
+  private modals: IModal[] = [];
 
   constructor() {}
+
+  get modalsArray(): IModal[] {
+    return this.modals;
+  }
 
   registerModal(modalId: string) {
     const modal = this.modals.find((m) => m.modalId === modalId);
